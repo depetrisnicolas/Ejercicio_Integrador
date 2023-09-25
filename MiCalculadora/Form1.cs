@@ -57,7 +57,7 @@ namespace MiCalculadora
 
         private void FrmCalculadora_FormClosing(object sender, FormClosingEventArgs e)
         {
-            DialogResult resultado = MessageBox.Show("Desea cerrar la calculadoraaaaaa?", "Cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult resultado = MessageBox.Show("Desea cerrar la calculadora?", "Cierre", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resultado == DialogResult.No)
             {
                 e.Cancel = true;
