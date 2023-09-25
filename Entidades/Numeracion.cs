@@ -50,9 +50,9 @@ namespace Entidades
             {
                 this.valorNumerico = BinarioADecimal(valor);
             }
-            else if (double.TryParse(valor, out double valorEntero))
+            else if (double.TryParse(valor, out double valorDecimal))
             {
-                this.valorNumerico = valorEntero;
+                this.valorNumerico = valorDecimal;
             }
             else
             {
@@ -75,9 +75,9 @@ namespace Entidades
 
         private bool EsBinario(string valor)
         {
-            Regex regex = new Regex("^[0|1]+$");
+            string patron = "^[0|1]+$";
 
-            return regex.IsMatch(valor);
+            return Regex.IsMatch(valor, patron);
         }
 
         private double BinarioADecimal(string valor)

@@ -20,7 +20,6 @@ namespace MiCalculadora
         {
             this.cmbOperacion.Items.AddRange(new object[] { '+', '-', '/', '*' });
             this.rdbDecimal.Checked = true;
-            
         }
 
 
@@ -33,6 +32,8 @@ namespace MiCalculadora
         {
             this.txtPrimerOperador.Clear();
             this.txtSegundoOperador.Clear();
+            this.primerOperando = null;
+            this.segundoOperando = null;
             this.resultado = null;
             lblResultado.Text = "Resultado:";
         }
@@ -43,13 +44,20 @@ namespace MiCalculadora
 
             if (string.IsNullOrEmpty(txtPrimerOperador.Text) || string.IsNullOrEmpty(txtSegundoOperador.Text))
             {
-                MessageBox.Show("Debes ingresas valores\npara ambos operadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Se debe ingresar valores\npara ambos operadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                this.calculadora = new Operacion(this.primerOperando, this.segundoOperando);
-                this.resultado = this.calculadora.Operar(operador);
-                setResultado();  
+                if (this.primerOperando is not null && this.segundoOperando is not null)
+                {
+                    this.calculadora = new Operacion(this.primerOperando, this.segundoOperando);
+                    this.resultado = this.calculadora.Operar(operador);
+                    setResultado();
+                }
+                else
+                {
+                    MessageBox.Show("Solo puede ingresar valores numéricos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -85,7 +93,7 @@ namespace MiCalculadora
             if (this.resultado is not null)
             {
                 lblResultado.Text = $"Resultado: {this.resultado.ConvertirA(this.sistema)}";
-            }         
+            }
         }
 
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
@@ -101,7 +109,7 @@ namespace MiCalculadora
             if (double.TryParse(txtSegundoOperador.Text, out double numeroIngresado))
             {
                 this.segundoOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
-            }    
+            }
         }
     }
 }

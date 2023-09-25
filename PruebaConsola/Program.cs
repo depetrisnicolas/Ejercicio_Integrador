@@ -6,27 +6,22 @@ namespace PruebaConsola
     {
         static void Main(string[] args)
         {
-            Numeracion primerNumero = new Numeracion("f", Numeracion.ESistema.Decimal);
-            Numeracion segundoNumero = new Numeracion("f", Numeracion.ESistema.Decimal);
+            Numeracion primerNumero = new Numeracion(50, Numeracion.ESistema.Binario);
+            Numeracion segundoNumero = new Numeracion("f", Numeracion.ESistema.Binario);
 
             Console.WriteLine(primerNumero.Valor);
+            Console.WriteLine(primerNumero.Sistema);
             Console.WriteLine(segundoNumero.Valor);
+            Console.WriteLine(segundoNumero.Sistema);
+            Operacion nuevaOperacion = new Operacion(primerNumero, segundoNumero);
+            //Numeracion resultado = nuevaOperacion.Operar('+');
+            //Console.WriteLine(resultado.Valor);
 
-            Operacion nuevaOperacion = new Operacion (primerNumero, segundoNumero);
-            Numeracion resultado = nuevaOperacion.Operar('/');
-            Console.WriteLine(resultado.ConvertirA(Numeracion.ESistema.Decimal));
-
-
-            //Numeracion resultadoSuma = primerNumero / segundoNumero;
-            //Console.WriteLine(resultadoSuma.Valor);
-
-            //Operacion operacion = new Operacion(primerNumero, segundoNumero);
+            Operacion operacion = new Operacion(primerNumero, segundoNumero);
 
             //Numeracion tercerNumero = operacion.Operar('/');
             //Console.WriteLine(tercerNumero.Valor);
 
-            //double nuevoNumero = Numeracion.BinarioADecimal("f");
-            //Console.WriteLine(nuevoNumero.ToString());
 
         }
     }

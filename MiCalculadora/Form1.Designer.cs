@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCalculadora));
             lblResultado = new Label();
             lblPrimerOperador = new Label();
             lblOperacion = new Label();
@@ -192,6 +193,7 @@
             Controls.Add(lblPrimerOperador);
             Controls.Add(lblResultado);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "FrmCalculadora";
