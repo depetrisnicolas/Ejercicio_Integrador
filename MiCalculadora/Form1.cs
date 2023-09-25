@@ -1,4 +1,5 @@
 using Entidades;
+
 namespace MiCalculadora
 {
     public partial class FrmCalculadora : Form
@@ -40,18 +41,15 @@ namespace MiCalculadora
         {
             char operador = cmbOperacion.Text.FirstOrDefault();
 
-            if (txtPrimerOperador.Text != string.Empty && txtSegundoOperador.Text != string.Empty)
+            if (string.IsNullOrEmpty(txtPrimerOperador.Text) || string.IsNullOrEmpty(txtSegundoOperador.Text))
             {
-                Operacion nuevaOperacion = new Operacion(this.primerOperando, this.segundoOperando);
-                this.resultado = nuevaOperacion.Operar(operador);
-                MessageBox.Show(this.primerOperando.Valor);
-                MessageBox.Show(this.segundoOperando.Valor);
-                setResultado();
-
+                MessageBox.Show("Debes ingresas valores\npara ambos operadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Debes ingresas valores\npara ambos operadores", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.calculadora = new Operacion(this.primerOperando, this.segundoOperando);
+                this.resultado = this.calculadora.Operar(operador);
+                setResultado();  
             }
         }
 
@@ -84,7 +82,7 @@ namespace MiCalculadora
 
         private void setResultado()
         {
-            if(this.resultado is not null)
+            if (this.resultado is not null)
             {
                 lblResultado.Text = $"Resultado: {this.resultado.ConvertirA(this.sistema)}";
             }         
@@ -92,17 +90,18 @@ namespace MiCalculadora
 
         private void txtPrimerOperador_TextChanged(object sender, EventArgs e)
         {
-            double numeroIngresado;
-            double.TryParse(txtPrimerOperador.Text, out numeroIngresado);
-
-            this.primerOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
+            if (double.TryParse(txtPrimerOperador.Text, out double numeroIngresado))
+            {
+                this.primerOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
+            }
         }
+
         private void txtSegundoOperador_TextChanged(object sender, EventArgs e)
         {
-            double numeroIngresado;
-            double.TryParse(txtSegundoOperador.Text, out numeroIngresado);
-
-            this.segundoOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
+            if (double.TryParse(txtSegundoOperador.Text, out double numeroIngresado))
+            {
+                this.segundoOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
+            }    
         }
     }
 }
