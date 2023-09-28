@@ -16,9 +16,8 @@ namespace Entidades
 
         //CONSTRUCTORES
         public Numeracion(double valor, ESistema sistema)
+            :this(valor.ToString(), sistema)
         {
-            this.valorNumerico = valor;
-            this.sistema = sistema;
         }
 
         public Numeracion(string valor, ESistema sistema)
@@ -58,6 +57,7 @@ namespace Entidades
             {
                 this.valorNumerico = double.MinValue;
             }
+            this.sistema = sistema;
         }
 
         public string ConvertirA(ESistema sistema)
@@ -132,7 +132,7 @@ namespace Entidades
             {
                 return (DecimalABinario(resultado));
             }
-            return "El valor ingresado es inválido";
+            return "Número inválido";
         }
 
 

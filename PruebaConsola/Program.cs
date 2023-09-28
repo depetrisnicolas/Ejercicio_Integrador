@@ -7,7 +7,7 @@ namespace PruebaConsola
         static void Main(string[] args)
         {
             Numeracion primerNumero = new Numeracion(50, Numeracion.ESistema.Binario);
-            Numeracion segundoNumero = new Numeracion("f", Numeracion.ESistema.Binario);
+            Numeracion segundoNumero = new Numeracion("1000", Numeracion.ESistema.Binario);
 
             Console.WriteLine(primerNumero.Valor);
             Console.WriteLine(primerNumero.Sistema);
