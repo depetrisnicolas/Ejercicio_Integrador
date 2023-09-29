@@ -160,58 +160,22 @@ namespace Entidades
 
         public static Numeracion operator + (Numeracion n1, Numeracion n2)
         {
-            if (n1 == n2)
-            {
-                return new Numeracion(n1.valorNumerico + n2.valorNumerico, n1.Sistema);
-            }
-            else
-            {
-                throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-            }
+            return new Numeracion(n1.valorNumerico + n2.valorNumerico, n1.Sistema);
         }
 
         public static Numeracion operator - (Numeracion n1, Numeracion n2)
         {
-            if (n1 == n2)
-            {
-                return new Numeracion(n1.valorNumerico - n2.valorNumerico, n1.Sistema);
-            }
-            else
-            {
-                throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-            }
+            return new Numeracion(n1.valorNumerico - n2.valorNumerico, n1.Sistema);
         }
 
         public static Numeracion operator * (Numeracion n1, Numeracion n2)
         {
-            if (n1 == n2)
-            {
-                return new Numeracion(n1.valorNumerico * n2.valorNumerico, n1.Sistema);
-            }
-            else
-            {
-                throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-            }
+            return new Numeracion(n1.valorNumerico * n2.valorNumerico, n1.Sistema);
         }
 
-        public static Numeracion operator /(Numeracion n1, Numeracion n2)
+        public static Numeracion operator / (Numeracion n1, Numeracion n2)
         {
-            if (n1 == n2)
-            {
-                if (n2.valorNumerico != 0)
-                {
-                    return new Numeracion(n1.valorNumerico / n2.valorNumerico, n1.Sistema);
-                }
-                else
-                {
-                    throw new DivideByZeroException("No se puede dividir por 0");
-                }
-            }
-            else
-            {
-                throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-            }
-
+            return new Numeracion(n1.valorNumerico / n2.valorNumerico, n1.Sistema);
         }
 
     }

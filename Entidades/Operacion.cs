@@ -52,16 +52,45 @@ namespace Entidades
             switch (operador)
             {
                 case '-':
-                    return this.primerOperando - this.segundoOperando;
+                    if (this.primerOperando == this.segundoOperando)
+                    {
+                        return this.primerOperando - this.segundoOperando;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
+                    }
+                    
 
                 case '*':
-                    return this.primerOperando * this.segundoOperando;
+                    if (this.primerOperando == this.segundoOperando)
+                    {
+                        return this.primerOperando * this.segundoOperando;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
+                    }
 
                 case '/':
-                    return this.primerOperando / this.segundoOperando;
+                    if (this.primerOperando == this.segundoOperando)
+                    {
+                        return this.primerOperando / this.segundoOperando;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
+                    }
 
                 default:
-                    return this.primerOperando + this.segundoOperando;
+                    if (this.primerOperando == this.segundoOperando)
+                    {
+                        return this.primerOperando + this.segundoOperando;
+                    }
+                    else
+                    {
+                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
+                    }
             }
         }
     }
