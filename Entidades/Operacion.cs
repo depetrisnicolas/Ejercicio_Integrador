@@ -48,49 +48,27 @@ namespace Entidades
         //METODO
         public Numeracion Operar(char operador)
         {
-
-            switch (operador)
+            if (this.primerOperando == this.segundoOperando)
             {
-                case '-':
-                    if (this.primerOperando == this.segundoOperando)
-                    {
+                switch (operador)
+                {
+                    case '-':
                         return this.primerOperando - this.segundoOperando;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-                    }
-                    
 
-                case '*':
-                    if (this.primerOperando == this.segundoOperando)
-                    {
+                    case '*':
                         return this.primerOperando * this.segundoOperando;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-                    }
 
-                case '/':
-                    if (this.primerOperando == this.segundoOperando)
-                    {
+                    case '/':
                         return this.primerOperando / this.segundoOperando;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-                    }
 
-                default:
-                    if (this.primerOperando == this.segundoOperando)
-                    {
+                    default:
                         return this.primerOperando + this.segundoOperando;
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
-                    }
+                }
+            
+            }
+            else
+            {
+                throw new InvalidOperationException("La operación no es válida para numeraciones con sistemas diferentes.");
             }
         }
     }
