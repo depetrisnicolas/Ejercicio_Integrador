@@ -8,7 +8,7 @@ namespace MiCalculadora
         private Numeracion primerOperando;
         private Numeracion segundoOperando;
         private Numeracion resultado;
-        private Numeracion.ESistema sistema;
+        private ESistema sistema;
 
         public FrmCalculadora()
         {
@@ -54,6 +54,7 @@ namespace MiCalculadora
                     this.resultado = this.calculadora.Operar(operador);
                     setResultado();
                 }
+                //ESTE MENSAJE APARECE SI EL USUARIO COMPLETA AMBOS OPERADORES CON CARACTERES QUE NO SON NUMERICOS
                 else
                 {
                     MessageBox.Show("Solo puede ingresar valores numéricos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -74,7 +75,7 @@ namespace MiCalculadora
         {
             if (rdbBinario.Checked)
             {
-                this.sistema = Numeracion.ESistema.Binario;
+                this.sistema = ESistema.Binario;
                 setResultado();
             }
         }
@@ -83,7 +84,7 @@ namespace MiCalculadora
         {
             if (rdbDecimal.Checked)
             {
-                this.sistema = Numeracion.ESistema.Decimal;
+                this.sistema = ESistema.Decimal;
                 setResultado();
             }
         }
@@ -100,7 +101,7 @@ namespace MiCalculadora
         {
             if (double.TryParse(txtPrimerOperador.Text, out double numeroIngresado))
             {
-                this.primerOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
+                this.primerOperando = new Numeracion(numeroIngresado, ESistema.Decimal);
             }
         }
 
@@ -108,7 +109,7 @@ namespace MiCalculadora
         {
             if (double.TryParse(txtSegundoOperador.Text, out double numeroIngresado))
             {
-                this.segundoOperando = new Numeracion(numeroIngresado, Numeracion.ESistema.Decimal);
+                this.segundoOperando = new Numeracion(numeroIngresado, ESistema.Decimal);
             }
         }
     }

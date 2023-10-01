@@ -5,11 +5,6 @@ namespace Entidades
 {
     public class Numeracion
     {
-        public enum ESistema
-        {
-            Decimal, Binario
-        }
-
         //ATRIBUTOS
         private ESistema sistema;
         private double valorNumerico;
@@ -49,9 +44,9 @@ namespace Entidades
             {
                 this.valorNumerico = BinarioADecimal(valor);
             }
-            else if (double.TryParse(valor, out double valorDecimal))
+            else if (double.TryParse(valor, out double valorEnDecimal))
             {
-                this.valorNumerico = valorDecimal;
+                this.valorNumerico = valorEnDecimal;
             }
             else
             {
@@ -75,9 +70,9 @@ namespace Entidades
 
         private bool EsBinario(string valor)
         {
-            string patron = "^[0|1]+$";
+            string patronDeBusqueda = "^[0|1]+$";
 
-            return Regex.IsMatch(valor, patron);
+            return Regex.IsMatch(valor, patronDeBusqueda);
         }
 
         private double BinarioADecimal(string valor)
@@ -107,7 +102,7 @@ namespace Entidades
                 if (resultadoDivision >= 0)
                 {
                     int bit = resultadoDivision % 2;
-                    resultadoDivision = resultadoDivision / 2;
+                    resultadoDivision /= 2;
 
                     numeroBinario = bit.ToString() + numeroBinario;
 
@@ -128,9 +123,9 @@ namespace Entidades
 
         private string DecimalABinario(string valor)
         {
-            if (int.TryParse(valor, out int resultado))
+            if (int.TryParse(valor, out int valorEnDecimal))
             {
-                return (DecimalABinario(resultado));
+                return (DecimalABinario(valorEnDecimal));
             }
             return "Número inválido";
         }
